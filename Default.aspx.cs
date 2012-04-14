@@ -17,17 +17,7 @@ public partial class _Default : System.Web.UI.Page
         SQLiteConnection sqlite = new SQLiteConnection("Data Source=e:\\db\\project.s3db");
         sqlite.Open();
         SQLiteCommand command = new SQLiteCommand("Select * from login where username='" + TextBox1.Text + "' and password='" + TextBox2.Value + "'", sqlite);
-        /*
-        OleDbConnection con;   // create connection
-        OleDbCommand com;  // create command
-        OleDbDataReader dr;  //Dataread for read data from database
-        con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\mahi\\Documents\\login.accdb");
-        com = new OleDbCommand("Select * from login where username='"+TextBox1.Text+"' and password='"+TextBox2.Text+"'", con);
-        con.Open();                                        // open the connection
-        dr = com.ExecuteReader();
-       // char buffer[];
-        //int length;
-        */
+        
         SQLiteDataReader reader = command.ExecuteReader();        
         SQLiteDataAdapter DB;
         if (reader.Read())
@@ -41,6 +31,6 @@ public partial class _Default : System.Web.UI.Page
         }
         else
             wrong.Style.Value = "visibility:visible";
-        sqlite.Close();  //Close the connection
+        sqlite.Close();  
     }
 }
